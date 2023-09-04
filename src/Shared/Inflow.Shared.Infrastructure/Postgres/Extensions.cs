@@ -74,14 +74,6 @@ public static class Extensions
         return services;
     }
 
-    public static IServiceCollection AddTransactionalDecorators(this IServiceCollection services)
-    {
-        services.TryDecorate(typeof(ICommandHandler<>), typeof(TransactionalCommandHandlerDecorator<>));
-        services.TryDecorate(typeof(IEventHandler<>), typeof(TransactionalEventHandlerDecorator<>));
-
-        return services;
-    }
-
     public static IServiceCollection AddPostgres<T>(this IServiceCollection services) where T : DbContext
     {
         var options = services.GetOptions<PostgresOptions>("postgres");

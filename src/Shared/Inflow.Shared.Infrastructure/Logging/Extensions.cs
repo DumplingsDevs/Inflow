@@ -24,15 +24,6 @@ public static class Extensions
     private const string AppSectionName = "app";
     private const string LoggerSectionName = "logger";
 
-    public static IServiceCollection AddLoggingDecorators(this IServiceCollection services)
-    {
-        services.TryDecorate(typeof(ICommandHandler<>), typeof(LoggingCommandHandlerDecorator<>));
-        services.TryDecorate(typeof(IEventHandler<>), typeof(LoggingEventHandlerDecorator<>));
-        services.TryDecorate(typeof(IQueryHandler<,>), typeof(LoggingQueryHandlerDecorator<,>));
-
-        return services;
-    }
-
     public static IApplicationBuilder UseLogging(this IApplicationBuilder app)
     {
         app.Use(async (ctx, next) =>
