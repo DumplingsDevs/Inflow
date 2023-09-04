@@ -38,7 +38,6 @@ public static class Extensions
             return services;
         }
 
-        services.TryDecorate(typeof(IEventHandler<>), typeof(InboxEventHandlerDecorator<>));
         services.AddHostedService<OutboxProcessor>();
         services.AddHostedService<InboxCleanupProcessor>();
         services.AddHostedService<OutboxCleanupProcessor>();
